@@ -59,13 +59,17 @@ With `remote-control : true` in the settings you can use a remote control device
 
 ---
 
-##PITCHME Settings
+## PITCHME Settings
 
 Use a `PITCHME.yaml` file to store some presentation settings that are loaded with the slide show.
 
 If the file is _not_ there, the presentation halts and you have to add the file.
 
 ### Settings
+
+TODO...
+
+
 
 ---
 
@@ -163,7 +167,7 @@ Adds an emoji in place in text.
 @box[type...](text)
 ```
 `type...` is one or more CSS types. These include:
-* `rounded` and `waved` or the default (box, don't specify either)
+* `rounded` and `waved` or the default (don't specify for a square box)
 * some colors with `bg-` and the color (like `bg-white`, `bg-green`, etc.)
 * some text colors with `text-` and the color (like `text-white`, `text-green`, etc.)
 * custom CSS types
@@ -405,3 +409,26 @@ and so on. See https://highlightjs.readthedocs.io/en/latest/css-classes-referenc
 
 Set a default code language with the `highlight : lang` setting in `PITCHME.yaml`. 
 
+---
+
+## Images
+
+---
+
+### Rich Media
+
+---
+
+### Auxillary Features
+
+---
+
+## Speaker Features
+
+---
+
+## Slide Themes
+
+---
+
+## Anything else...
