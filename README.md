@@ -415,11 +415,11 @@ Set a default code language with the `highlight : lang` setting in `PITCHME.yaml
 
 ---
 
-### Rich Media
+## Rich Media
 
 ---
 
-### Auxillary Features
+## Auxillary Features
 
 ---
 
