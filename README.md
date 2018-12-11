@@ -370,9 +370,14 @@ where `class` is a custom CSS attribute you've defined in the template CSS file.
 ### Gists
 
 ```
----?gist=onetapbeyond/494e0fecaf0d6a2aa2acadfb8eb9d6e8&lang=Scala&title=GIST: Scala Snippet
+---?gist=onetapbeyond/494e0fecaf0d6a2aa2acadfb8eb9d6e8
 ```
 to load the Gist and format it with a language, then give it a title on the slide.
+
+Optional parameters include:
+- `&lang=js` for language syntax formatting
+- `&color=#123456` for a background color
+- `&title=text` for a slide title header
 
 ### Gist code fragments
 ```
@@ -409,13 +414,182 @@ and so on. See https://highlightjs.readthedocs.io/en/latest/css-classes-referenc
 
 Set a default code language with the `highlight : lang` setting in `PITCHME.yaml`. 
 
+### Repo Source Files
+```
+---?code=src/server.go
+```
+
+Renders the `src/server.go` file on a slide. Optional parameters include:
+- `&lang=js` for language syntax formatting
+- `&color=#123456` for a background color
+- `&title=text` for a slide title header
+
+### Markdown Files
+
+Use the same format as Repo Source Files above. (`?code=src/file.md`)
+
 ---
 
 ## Images
 
+### Simple image
+```
+![alt-title](url-src)
+```
+inserts a basic image. Local files must be relative to root of the Git repo (ex: `assets/img/logo.png`) or remote files should be prefixed with http:// or https://.
+
+### Background Image
+```
+---?image=url-src
+```
+where `url-src` is a local file relative to root of the Git repo (ex: `assets/img/logo.png`) or remote files should be prefixed with http:// or https://.
+
+Optional parameters include:
+- `&size=50% 100%` to scale the image. Use any valid CSS background-size values (width, width height, auto, auto auto, or other)
+- `&size=auto 90%` to scale a tall image to fit on the slide properly (you can adjust the 90% as desired)
+- `&size=contain` to resize the image so that it's fully visible within the slide
+- `&size=cover` to resize the image so it completely fills the background, stretching it if need be
+- `&color=#123456` to change the background color. Use any valid CSS color value
+- `&position=center` to adjust the background position of the image. You can use any `background-position` CSS property, including center, left, right, px values, percentage values, and more. Default is center.
+- `&repeat=repeat-x` to repeat the image in a tiled pattern. Any `background-repeat` CSS property can work including no-repeat, repeat, repeat-x, repeat-y, space, round, and more. It can be either one syntax or `horizontal vertical` syntax.
+- `&transition=fade` to add a transition between slides.
+
+### Background Opacity (Pro)
+
+Add the following parameter to a background image:
+```
+&opacity=num
+``` 
+where `num` is a percentage of the capacity (where 0% is perfect transparent and 100% is perfectly opaque).
+
+### Image animations
+
+Make a set of image slides that have minor changes, then name them traisition between each other:
+```
+---?image=assets/img/grav-open-course-workflow-1.png&size=contain&transition=none
+
+---?image=assets/img/grav-open-course-workflow-2.png&size=contain&transition=none
+
+---?image=assets/img/grav-open-course-workflow-3.png&size=contain&transition=none
+
+---?image=assets/img/grav-open-course-workflow-4.png&size=contain&transition=none
+```
+
+### Size limitations
+
+Images over 1 megabyte will not load automatically. This is to help prevent excessive loading time. Use some image editing tools to shrink that down.
+
 ---
 
 ## Rich Media
+
+### Linear gradients
+
+Add the gradient to a background color slide:
+```
+---?color=linear-gradient(to left, #123456, #654321)
+```
+Use https://uigradients.com/ to make some gradients and get CSS codes to use.
+
+### Math formulas
+
+You can use MathJax scripting to display math formulas. 
+
+Example:
+```
+`\[
+\left( \sum_{k=1}^n a_k b_k \right)^{\!\!2} \leq
+ \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
+\]`
+```
+See https://www.mathjax.org/ to learn about syntax.
+
+It is disabled by default, you'll need to enable it in settings:
+```
+mathjax : TeX-MML-AM_HTMLorMML-full
+```
+
+### Charts
+
+Charts are rendered with Chart.js. Enclose it in `<chart>` tags:
+
+```
+<canvas data-chart="line">
+<!-- 
+{
+ "data": {
+  "labels": ["January"," February"," March"," April"," May"," June"," July"],
+  "datasets": [
+   {
+    "data":[65,59,80,81,56,55,40],
+    "label":"My first dataset","backgroundColor":"rgba(20,220,220,.8)"
+   },
+   {
+    "data":[28,48,40,19,86,27,90],
+    "label":"My second dataset","backgroundColor":"rgba(220,120,120,.8)"
+   }
+  ]
+ }, 
+ "options": { "responsive": "true" }
+}
+-->
+</canvas>
+```
+
+It is disabled by default, it needs to be enabled in the settings:
+```
+charts : true
+```
+
+See https://github.com/rajgoel/reveal.js-plugins/tree/master/chart for more information.
+
+### Font Awesome
+```
+@fa[icon-name]
+```
+to add an icon. leave off the `fa-` at the beginning of the icon name.
+
+```
+@fa[icon-name](title)
+```
+to add a title attribute to the icon too.
+
+```
+@fa[icon-name size]
+```
+to add the icon with a certain size. Options include fa-lg, fa-2x, fa-3x, fa-4x, fa-5x.
+
+```
+@fa[icon-name fa-spin]
+```
+to spin the icon.
+
+You can add additional CSS classes after the icon-name, size, or spin.
+
+See https://fontawesome.com/v4.7.0/icons for the full list of icons.
+
+### Videos
+
+Videos need to be streamed, not added to the repo. 
+
+```
+![title](https://player.vimeo.com/video/123456789)
+```
+will add a Vimeo video.
+
+```
+![title](https://www.youtube.com/embed/abcdefghijk)
+```
+will add a YouTube video.
+
+```
+![title](http://url-to-video.com/video.mp4)
+```
+to add a MP4 or WebM video to the page.
+
+(Pro) With a pro account, you can stream repo videos locally with GitPitch Desktop.
+
+
 
 ---
 
