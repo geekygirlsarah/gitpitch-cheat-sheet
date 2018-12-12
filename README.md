@@ -568,7 +568,7 @@ You can add additional CSS classes after the icon-name, size, or spin.
 
 See https://fontawesome.com/v4.7.0/icons for the full list of icons.
 
-### Videos
+### In-slide Videos
 
 Videos need to be streamed, not added to the repo. 
 
@@ -588,6 +588,55 @@ will add a YouTube video.
 to add a MP4 or WebM video to the page.
 
 (Pro) With a pro account, you can stream repo videos locally with GitPitch Desktop.
+
+### Background Videos
+
+```
+---?video=url-src
+```
+will add a video in the background (or "theater mode"). Videos can only be streamed from a MP4 or WebM video file, or a Youtube, Vimeo, or other site.
+
+---
+
+## Layout Features
+
+### Snap Layout Basic Syntax
+
+```
+@snap[direction]
+text
+@snapend
+```
+creates a snap fragment for text. `direction` can be any cardinal direction (north, north-west, west, south-west, etc.) or midpoint. 
+
+### Span Sizes
+
+```
+@snap[west span-40]
+text
+@snapend
+```
+where `span-40` is a CSS class that specifies 40% of the screen should be used by that snap widget in the `west` area. Any multiple of 10 between 0 and 100 can be used as a span size.
+
+### Sidebar
+
+```
+@snap[west sidebar]
+text
+@snapend
+```
+sets the text to be positioned in a sidebar in the `west` section. Use a `.sidebar` CSS element to define any traits (like width) to be used.
+
+### MD CSS Shortcuts
+
+```
+@snap[south message-box]
+content
+@snapend
+```
+adds a "message-box" (box with rounded corners at the bottom of the slide). Can be altered with `.message-box` CSS element.
+
+
 
 
 
