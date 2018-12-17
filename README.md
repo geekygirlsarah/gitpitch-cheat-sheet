@@ -685,6 +685,53 @@ Many other sites like Wordpress, Medium, Tumblr, and Blogger support them too.
 
 ## Speaker Features
 
+### Speaker Notes
+
+Speaker notes are private notes that you see and are not presented on the slide.
+
+Notes are added after a `Note:` section, and can be text or markdown:
+
+```
+---
+# Header
+
+Notes:
+Anything here is not shown on the slide.
+```
+
+### Speaker Notes Preview
+
+Add `?n=true` to the URL to enable a speaker notes preview, which shows notes by the slide.
+
+### Speaker Notes Window
+
+Press S while in the slide show to open the speaker notes window.
+
+### Remote Control Setting
+
+Add this to your `PITCHME.md` file to enable a remote control:
+```
+remote-control : true
+```
+
+### Presenting Offline without the Network
+
+Everyone: There is an option to download an offline, self-contained form of slides. 
+
+GitPitch Pro: You can install GitPitch Desktop for offline presentations. This also supports remote controls and multiple computers (like tablet with speaker notes and laptop with slides).
+
+### Presenting on a Conference Laptop
+
+GitPitch uses a lazy-loading strategy. This makes sense sharing online since it doesn't load everything all at once. For instances like this, it may not make sense. You can turn on eager-loading (or turn off lazy-loading) with this:
+
+```
+eager-loading : true
+```
+
+This is also recommended for any live presentation.
+
+
+
 ---
 
 ## Slide Themes
