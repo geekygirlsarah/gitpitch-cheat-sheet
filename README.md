@@ -600,6 +600,10 @@ will add a video in the background (or "theater mode"). Videos can only be strea
 
 ## Layout Features
 
+### Note
+
+If you use snap layouts AND slide transitions, you may end up with cases where the slide transitions, then stuff pops into place instantly. This is due to how the snap rendering system works separately from the slide rendering system. See https://gitpitch.com/docs/layout-features/snap-layout-slide-transitions/#snap-layouts-rendering-and-slide-transitions for more information and possible ways to fix it.
+
 ### Snap Layout Basic Syntax
 
 ```
@@ -627,22 +631,55 @@ text
 ```
 sets the text to be positioned in a sidebar in the `west` section. Use a `.sidebar` CSS element to define any traits (like width) to be used.
 
-### MD CSS Shortcuts
+### Snap Layout Examples
+
+See https://gitpitch.com/docs/layout-features/examples-snap-inspirations/ for some examples of cool slides you can make in Markdown.
+
+### Disable All Transitions
+
+Put this in your `PITCHME.yaml` file:
+```
+transition : none
+```
+
+### Disable Transition on Individual Slides
 
 ```
-@snap[south message-box]
-content
-@snapend
+---
+@transition[none]
 ```
-adds a "message-box" (box with rounded corners at the bottom of the slide). Can be altered with `.message-box` CSS element.
-
-
-
-
 
 ---
 
 ## Auxillary Features
+
+### Google Analytics
+
+Add this to your `PITCHME.yaml` file:
+
+```
+gatoken : UA-1111111-1
+```
+You must also create a GA Property for gitpitch.com as well. See https://gitpitch.com/docs/settings/google-analytics for directions.
+
+### Auto-Generated Table of Contents
+
+![Screenshot](https://gitpitch.com/docs/images/auxiliary-feature-toc.jpg)
+
+The table of contents is automatically generated from your content. You can customize the names of slides by adding to each slide:
+
+```
+---
+@title[Slide title]
+```
+
+If you don't specify a slide, and GitPitch can't figure one out, then the slide number is used in the TOC.
+
+### Embedding GitPitch slides into other sites
+
+You can use Embed.ly to embed them into sites. See https://embed.ly/provider/gitpitch for more information.
+
+Many other sites like Wordpress, Medium, Tumblr, and Blogger support them too.
 
 ---
 
