@@ -709,7 +709,7 @@ Press S while in the slide show to open the speaker notes window.
 
 ### Remote Control Setting
 
-Add this to your `PITCHME.md` file to enable a remote control:
+Add this to your `PITCHME.yaml` file to enable a remote control:
 ```
 remote-control : true
 ```
@@ -730,11 +730,326 @@ eager-loading : true
 
 This is also recommended for any live presentation.
 
+---
+
+## Slide Themes
+
+### Fixed Themes
+
+GitPitch ships with several out-of-the-box themes. These are inherited from Reveal.js. You can go into the left menu, choose one, and your slideshow will instantly have that.
+
+Themes include:
+- White (default)
+- Black
+- Sky
+- Beige
+- Moon
+- Night
+- Simple
+
+You can specify a theme in your `PITCHME.yaml` file too:
+```
+theme : beige
+```
+
+### Customize Reveal.js Themes
+
+You can see the CSS style rules involved in this here: https://github.com/hakimel/reveal.js/tree/master/css/theme
+
+You can use a web inspector in your browser to see the style settings as well.
+
+To override (the theme with your own CSS file, set this setting in your `PITCHME.yaml` file:
+```
+theme-override : assets/css/PITCHME.css
+```
+(where `assets/css/PITCHME.css` is a CSS file relative to the repo root directory)
+
+### Span-Width Styles
+
+You can use `.span-`width styles to constrain the horizontal space used by slide content. The vertical content is adjusted automatically.
+
+`.span-` classes go from `.span-5` to `.span-100` in 5-percent increments.
+
+### Text Color Styles
+
+Several built-in color styles are available:
+- `.text-black`
+- `.text-blue`
+- `.text-gray`
+- `.text-green`
+- `.text-orange`
+- `.text-gold`
+- `.text-pink`
+- `.text-purple`
+- `.text-yellow`
+- `.text-white`
+
+There are also heading color styles (starts with `.h1-` through `.h4-` etc.) with the same colors as above.
+
+### Background Color Styles
+
+Several built-in color styles are available:
+- `.bg-black`
+- `.bg-blue`
+- `.bg-gray`
+- `.bg-green`
+- `.bg-orange`
+- `.bg-gold`
+- `.bg-pink`
+- `.bg-purple`
+- `.bg-yellow`
+- `.bg-white`
+
+
+### Text Font Sizes
+
+You can use `.text-`size styles to specify font sizes in .1 em sizes. 
+
+`.text-` classes go from `.text-01` (for 0.1em) to `.text-50` (for 5.0em) in 1 digit (or 0.1em) increments.
+
+### Font Weight Styles
+
+The following styles are available:
+
+- `.text-bold`
+- `.text-italic` or `.text-italics`
+- `.text-uppercase`
+- `.text-lowercase`
+- `.text-capitalize`
+- `.text-smallcaps`
+
+### Text Alignment Styles
+
+The following alignment styles are available:
+
+- `.text-center`
+- `.text-left`
+- `.text-right`
+
+### Overriding Utility Styles
+
+Any of the above utility styles can be overwritten by custom CSS.
+
+See https://gitpitch.com/docs/themes/css-utility-styles/ for definitions of how the above utility classes are defined.
+
+### (Pro) Fonts
+
+There are fonts attached to the default fixed theme. Font for the pro subscriptions allow you to have more choices based on some Google Web Fonts.
+
+Use the CSS from https://gitpitch.com/docs/themes/pro-fonts/ to enable these.
 
 
 ---
 
-## Slide Themes
+## Slideshow Settings
+
+All settings are stored in `PITCHME.yaml`.
+
+### Theme
+```
+theme : beige
+```
+Theme choices:
+- white (default)
+- black
+- sky
+- beige
+- moon
+- night
+- simple
+
+### Theme override
+```
+theme-override : css-src-file
+```
+File is relative to repo directory root.
+
+### Code Highlight Setting
+```
+highlight : language
+```
+(where `language` is a language supported by the [highlight.js](https://highlightjs.org/) library, and written in lowercase.)
+
+You can also add highlighting styles to the language by adding a style after it like so:
+```
+highlight : language-theme
+```
+(for example, `mono-blue`)
+
+See a demo of themes and languages here: https://highlightjs.org/static/demo/
+
+### Code Line Numbers Setting
+```
+code-line-numbers : true
+```
+(where it's `true` or `false` if you want line numbers on your code files)
+
+### Layout Setting
+```
+layout : top-left
+```
+Possible choices:
+- center (default)
+- center-left
+- center-right
+- top
+- top-left
+- top-right
+
+### Logo Image
+```
+logo : img-src-file
+```
+Img file is relative to repo root directory.
+
+```
+logo-position : position
+```
+Possible choices:
+- top-left (default)
+- top-right
+- bottom-left
+- bottom-right
+
+If logo-position is bottom-right, then controls layout setting is automatically set to using edges layout.
+
+### Background Settings
+```
+background : src-img-file
+```
+where source file is relative to repo directory.
+
+```
+background-size : classes
+```
+where `classes` are one or more classes that are valid background-size CSS properties.
+
+```
+background-position : pos
+```
+where position is any valid background-position CSS property.
+
+```
+background-color : class
+```
+where class is a valid background-color CSS property.
+
+```
+background-repeat : repeat-setting
+```
+where repeat-setting is a valid background-repeat CSS property.
+
+```
+background-opacity : num
+```
+where num is a number from 10 to 100, numbered in 5s, referring to a percentage of transparency.
+
+### Transition Setting
+```
+transition : fade
+```
+Possible choices:
+- none (default)
+- slide
+- fade
+- convex
+- concave
+- zoom
+
+### Title Setting
+```
+title : title-text
+```
+where `title-text` is the title used in search results, browser tabs, etc.
+
+### Footnote
+```
+footnote : footnote-text
+```
+where `footnote-text` is text shown in normal and fullscreen mode. It can be any HTML snippet.
+
+HTML in the footnote will need to be styled if you wish to change it.
+
+### Published Setting
+```
+published : true
+```
+where this setting lets you set whether it's post-development and ready to be shared.
+
+![](https://gitpitch.com/docs/images/settings-published-menu.jpg)
+
+### Loop Setting
+```
+loop : true
+```
+where the setting is whether the last slide will link back to the first slide, false by default.
+
+### RTL Setting
+```
+rtl : true
+```
+activates right-to-left navigation between slides. It is false by default (so left-to-right).
+
+### Controls Layout Setting
+```
+controls-layout : layout
+```
+Possible vhoices:
+- `bottom-right` (default)
+- `edges`
+
+### Print Fragments Setting
+```
+print-fragments : true
+```
+where true means all fragments will print into a PDF as their own page.
+
+### Mousewheel Setting
+```
+mousewheel : true
+```
+where this activates using the mouse wheel to scroll through slides, and is disabled by default.
+
+### Remote Control Setting
+```
+remote-control : true
+```
+where this activates using controllers to scroll through slides, and is disabled by default.
+
+Use 
+`remote-control-prevkey` and `remote-control-nextkey` to customize which buttons control the buttons. (Use number keycodes.)
+
+### Eager Loading Setting
+```
+eager-loading : true
+```
+sets whether it will load all of the images when the show loads (true) or as you slowly get to the particular slide (false, lazy loading).
+
+### Charts Plugin Setting
+```
+charts : true
+```
+will enable the charts plugin.
+
+### MathJax Plugin Setting
+```
+mathjax : setting
+```
+which will enable the MathJax plugin with a certain configuration, where possible settings are listed here: http://docs.mathjax.org/en/latest/config-files.html
+
+### Google Analytics Setting
+```
+gatoken : UA-11111111-1
+```
+where the token is a tracking code associated with a GA Property.
+
+### Twitter Card Settings
+```
+title : "title-text"
+description : 'desc-text"
+thumbnail : src-image-url
+```
+will set the Twitter Card or other Open Graph card details so they can be shared on social media.
 
 ---
 
