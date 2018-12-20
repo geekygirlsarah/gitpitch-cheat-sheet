@@ -65,11 +65,7 @@ Use a `PITCHME.yaml` file to store some presentation settings that are loaded wi
 
 If the file is _not_ there, the presentation halts and you have to add the file.
 
-### Settings
-
-TODO...
-
-
+See the Slideshow Settings section to see all the settings.
 
 ---
 
