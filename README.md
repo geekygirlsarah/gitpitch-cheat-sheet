@@ -1049,4 +1049,6 @@ will set the Twitter Card or other Open Graph card details so they can be shared
 
 ---
 
-## Anything else...
+# Corrections/Updates
+
+I will gladly accept PRs for updates on this or messages regarding corrections. Please submit a PR, contact me @geekygirlsarah on Twitter, or contact me through my website at sarahwithee.com. Thanks!
